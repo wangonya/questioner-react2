@@ -1,3 +1,7 @@
 import { combineReducers } from "redux";
 
-export default combineReducers({});
+import meetupReducer from "./meetupReducer";
+
+export default combineReducers({
+  meetups: meetupReducer
+});
