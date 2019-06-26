@@ -1,4 +1,4 @@
-import { FETCH_MEETUPS } from "./../actions/types";
+import { FETCH_MEETUPS, ERROR } from "./../actions/types";
 
 const initialState = {
   meetups: [],
@@ -12,6 +12,12 @@ export default function(state = initialState, action) {
       ...state,
       meetups: action.payload,
       loading: false
+    };
+  } else if (action.type === ERROR) {
+    return {
+      ...state,
+      loading: false,
+      error: action.payload
     };
   } else {
     return state;
