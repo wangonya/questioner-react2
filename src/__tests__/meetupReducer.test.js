@@ -1,4 +1,4 @@
-import { FETCH_MEETUPS } from "../actions/types";
+import { FETCH_MEETUPS, ERROR } from "../actions/types";
 import meetupReducer from "../reducers/meetupReducer";
 
 describe("meetupReducer", () => {
@@ -9,5 +9,10 @@ describe("meetupReducer", () => {
   test("state changes when FETCH_MEETUPS is dispatched", () => {
     const newState = meetupReducer(undefined, { type: FETCH_MEETUPS });
     expect(newState.loading).toBe(false);
+  });
+  test("state changes when ERROR is dispatched", () => {
+    const newState = meetupReducer(undefined, { type: ERROR });
+    expect(newState.loading).toBe(false);
+    // TODO: TEST FOR TRUTHY ERROR STATE
   });
 });
