@@ -1,7 +1,11 @@
 import React from "react";
-
+import TopNav from "./Navbar";
 function App() {
-  return <div>Hey there</div>;
+  return (
+    <div>
+      <TopNav />
+    </div>
+  );
 }
 
 export default App;
