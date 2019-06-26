@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import { FETCH_MEETUPS } from "./types";
+import { FETCH_MEETUPS, ERROR } from "./types";
 
 export const fetchMeetups = () => dispatch => {
   axios
@@ -13,9 +13,10 @@ export const fetchMeetups = () => dispatch => {
       });
     })
     .catch(err => {
-      this.setState({
-        loading: false,
-        error: err
+      console.log(err);
+      dispatch({
+        type: ERROR,
+        payload: err
       });
     });
 };
