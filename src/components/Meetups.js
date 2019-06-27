@@ -12,7 +12,7 @@ import {
 
 import { fetchMeetups } from "../actions/meetupActions";
 
-class Meetups extends Component {
+export class Meetups extends Component {
   componentDidMount() {
     this.props.fetchMeetups();
   }
@@ -31,7 +31,7 @@ class Meetups extends Component {
       <Container>
         <Row className="pt-5">
           {this.props.meetups.map(meetup => (
-            <Col sm="4" key={meetup.id}>
+            <Col sm="4" key={meetup.id} data-test="meetup-cards-test">
               <Card body>
                 <CardTitle>
                   <h5>{meetup.title}</h5>
