@@ -1,6 +1,14 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Spinner } from "reactstrap";
+import {
+  Spinner,
+  Container,
+  Row,
+  Col,
+  Card,
+  CardTitle,
+  CardText
+} from "reactstrap";
 
 import { fetchMeetups } from "../actions/meetupActions";
 
@@ -11,11 +19,31 @@ class Meetups extends Component {
 
   // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/static
   static renderLoading() {
-    return <Spinner type="grow" color="danger" />;
+    return (
+      <div className="pt-5 m-5 d-flex justify-content-center">
+        <Spinner type="grow" color="danger" />
+      </div>
+    );
   }
 
   renderMeetups() {
-    return <div>meetups here</div>;
+    return (
+      <Container>
+        <Row className="pt-5">
+          {this.props.meetups.map(meetup => (
+            <Col sm="4" key={meetup.id}>
+              <Card body>
+                <CardTitle>
+                  <h5>{meetup.title}</h5>
+                </CardTitle>
+                <CardText>{meetup.details}</CardText>
+                <a href="#" className="stretched-link" />
+              </Card>
+            </Col>
+          ))}
+        </Row>
+      </Container>
+    );
   }
 
   render() {
