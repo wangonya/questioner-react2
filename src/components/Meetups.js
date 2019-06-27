@@ -21,7 +21,7 @@ export class Meetups extends Component {
   static renderLoading() {
     return (
       <div className="pt-5 m-5 d-flex justify-content-center">
-        <Spinner type="grow" color="danger" />
+        <Spinner type="grow" color="danger" data-test="spinner-test" />
       </div>
     );
   }
