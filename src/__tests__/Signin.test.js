@@ -4,7 +4,6 @@ import { Redirect } from "react-router";
 
 import { store } from "../utils/testUtils";
 import { Signin } from "../components/Signin";
-import { errorAction } from "../actions/errorActions";
 
 describe("<Signin /> component", () => {
   let props;
