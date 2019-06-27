@@ -7,7 +7,6 @@ export const signIn = data => dispatch => {
     email: data.email,
     password: data.password
   };
-  console.log("called! data ==", userData);
   axios
     .post("https://questioner2.herokuapp.com/api/v2/auth/login", userData)
     .then(res => {
