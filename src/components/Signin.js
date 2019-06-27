@@ -31,7 +31,7 @@ export class Signin extends Component {
         <Row>
           <Col sm="12" md={{ size: 4, offset: 4 }}>
             <div className="p-5 my-2 rounded">
-              <Toast>
+              <Toast data-test="error-test">
                 <ToastHeader>Login Failed</ToastHeader>
                 <ToastBody>
                   Please check your credentials and try again
@@ -59,6 +59,7 @@ export class Signin extends Component {
             model="signin"
             className="pt-5"
             onSubmit={data => this.handleSubmit(data)}
+            data-test="form-test"
           >
             <FormGroup>
               <Label for="email">Email</Label>
