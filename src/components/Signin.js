@@ -1,5 +1,15 @@
 import React, { Component } from "react";
-import { Spinner, Row, Col, Button, FormGroup, Label } from "reactstrap";
+import {
+  Spinner,
+  Row,
+  Col,
+  Button,
+  FormGroup,
+  Label,
+  Toast,
+  ToastBody,
+  ToastHeader
+} from "reactstrap";
 import { Form, Control } from "react-redux-form";
 import { connect } from "react-redux";
 import { Redirect } from "react-router";
@@ -16,6 +26,23 @@ export class Signin extends Component {
   renderLoading() {
     if (this.props.isSignedIn) {
       return <Redirect to="/" />;
+    } else if (this.props.error) {
+      return (
+        <Row>
+          <Col sm="12" md={{ size: 4, offset: 4 }}>
+            <div className="p-5 my-2 rounded">
+              <Toast>
+                <ToastHeader>Login Failed</ToastHeader>
+                <ToastBody>
+                  Please check your credentials and try again
+                  <br />
+                  <a href="/signin/">Go Back</a>
+                </ToastBody>
+              </Toast>
+            </div>
+          </Col>
+        </Row>
+      );
     }
     return (
       <div className="pt-5 m-5 d-flex justify-content-center">
@@ -69,7 +96,8 @@ export class Signin extends Component {
 
 const mapStateToProps = state => ({
   isSignedIn: state.signin.isSignedIn,
-  loading: state.loading.loading
+  loading: state.loading.loading,
+  error: state.error.error
 });
 
 export default connect(
