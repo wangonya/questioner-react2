@@ -1,7 +1,7 @@
 import { errorAction } from "../actions/errorActions";
 import { store } from "../utils/testUtils";
 
-describe("meetupActions", () => {
+describe("errorActions", () => {
   beforeEach(() => {
     store.clearActions();
   });
