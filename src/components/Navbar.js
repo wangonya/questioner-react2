@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import {
   Collapse,
@@ -14,7 +15,7 @@ import Meetups from "./Meetups";
 import Signup from "./Signup";
 import Signin from "./Signin";
 
-export default class TopNav extends Component {
+export class TopNav extends Component {
   constructor(props) {
     super(props);
 
@@ -36,14 +37,22 @@ export default class TopNav extends Component {
           <NavbarBrand href="/">Questioner</NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
-            <Nav className="ml-auto" navbar>
-              <NavItem>
-                <NavLink href="/signin/">Sign In</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink href="/signup/">Sign up</NavLink>
-              </NavItem>
-            </Nav>
+            {this.props.isSignedIn ? (
+              <Nav className="ml-auto" navbar data-test="signed-in">
+                <NavItem>
+                  <NavLink href="/signin/">Sign out</NavLink>
+                </NavItem>
+              </Nav>
+            ) : (
+              <Nav className="ml-auto" navbar>
+                <NavItem>
+                  <NavLink href="/signin/">Sign In</NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink href="/signup/">Sign up</NavLink>
+                </NavItem>
+              </Nav>
+            )}
           </Collapse>
         </Navbar>
         <Route path="/" exact component={Meetups} />
@@ -53,3 +62,9 @@ export default class TopNav extends Component {
     );
   }
 }
+
+const mapStateToProps = state => ({
+  isSignedIn: state.signin.isSignedIn
+});
+
+export default connect(mapStateToProps)(TopNav);
