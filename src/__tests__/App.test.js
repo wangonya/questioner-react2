@@ -10,6 +10,6 @@ describe("<App /> root component", () => {
 
   test("renders <Navbar /> component", () => {
     const wrapper = shallow(<App />);
-    expect(wrapper.find("TopNav")).toHaveLength(1);
+    expect(wrapper.find("Connect(TopNav)")).toHaveLength(1);
   });
 });
